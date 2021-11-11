@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import classes from './App.module.css';
 import ProductData from "./data/ProductData";
+import ProductPreview from "./components/ProductPreview";
 
 function App() {
     // const hours = new Date().getHours() <= 9 ? `0${new Date().getHours()}` : new Date().getHours();
@@ -13,17 +14,7 @@ function App() {
                 </nav>
             </header>
             <div className={classes.MainContainer}>
-                <div className={classes.ProductPreview}>
-                    <img src={"https://imgur.com/iOeUBV7.png"} alt={"Product Preview"}/>
-                    {/*<div className={classes.TimeSection}>*/}
-                    {/*    <p>{`${hours}:${minutes}`}</p>*/}
-                    {/*</div>*/}
-
-                    <div className={classes.HeartBeatSection}>
-                        <i class="fas fa-heartbeat"></i>
-                        <p>78</p>
-                    </div>
-                </div>
+                <ProductPreview imgUrl={"https://imgur.com/iOeUBV7.png"}/>
 
                 <div className={classes.ProductData}>
                     <h1 className={classes.ProductTitle}>{ProductData.title}</h1>

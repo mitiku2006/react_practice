@@ -1,0 +1,40 @@
+.ProductPreview {
+    width: 50%;
+    position: relative;
+}
+
+.TimeSection, .HeartBeatSection{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.HeartBeatSection > i {
+    color: red;
+    animation: beat 1s infinite;
+}
+.HeartBeatSection > p {
+    margin-top: 16px;
+}
+
+.ProductPreview > img {
+    width: 100%;
+}
+
+@keyframes beat {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.9, 1.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
