@@ -29,10 +29,12 @@ class App extends Component {
              <div className="App">
                  <Topbar/>
                  <div className={classes.MainContainer}>
-                     <ProductPreview imgUrl={this.state.currentPreviewImage} showHeartBeat={this.state.showHeartBeatsSection}/>
+                     <ProductPreview imgUrl={this.state.currentPreviewImage}
+                                     showHeartBeat={this.state.showHeartBeatsSection}/>
                      <ProductDetail data={this.state.productData} onHeartClick={this.onHeartClick}
                                     onTimeClick={this.onTimeClick} onImageClicked={this.onImageClicked}
                                     currentPreviewImage={this.state.currentPreviewImage}
+                                    showHeartBeat={this.state.showHeartBeatsSection}
                         />
                  </div>
              </div>

@@ -18,9 +18,13 @@ const ProductDetail = (props) => {
             </div>
             <h3 className={classes.SectionHeading}>Features</h3>
             <div>
-                <button className={[classes.ButtonFeature, classes.ButtonFeatureSelected].join(' ')}
+                <button className={!props.showHeartBeat ?
+                        [classes.ButtonFeature, classes.ButtonFeatureSelected].join(' ') :
+                        classes.ButtonFeature}
                     onClick={() => props.onTimeClick()}>Time</button>
-                <button className={classes.ButtonFeature}
+                <button className={props.showHeartBeat ?
+                        [classes.ButtonFeature, classes.ButtonFeatureSelected].join(' ') :
+                        classes.ButtonFeature}
                     onClick={() => props.onHeartClick()}>Heart Beat</button>
             </div>
             <div>

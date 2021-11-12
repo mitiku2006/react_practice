@@ -67,3 +67,8 @@
     margin-top: 12px;
     font-weight: 600;
 }
+
+.ButtonFeature:hover {
+    background-color: #0d0b76; /* Green */
+    color: white;
+}
