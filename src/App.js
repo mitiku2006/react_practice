@@ -1,46 +1,45 @@
-import logo from './logo.svg';
+
 import classes from './App.module.css';
-import ProductData from "./data/ProductData";
-import ProductPreview from "./components/ProductPreview";
+import ProductData from "./util/ProductData";
+import ProductPreview from "./components/ProductPreview/ProductPreview";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
+import Topbar from "./components/Topbar/Topbar";
+import {Component} from "react";
 
-function App() {
-    // const hours = new Date().getHours() <= 9 ? `0${new Date().getHours()}` : new Date().getHours();
-    // const minutes = new Date().getHours() <= 9 ? `0${new Date().getMinutes()}` : new Date().getMinutes();
-    return (
-        <div className="App">
-            <header className={classes.AppHeader}>
-                <nav src={logo} className={classes.Topbar}>
-                    <img src={"exp-logo.png"} alt={"Expedia Logo"}/>
-                </nav>
-            </header>
-            <div className={classes.MainContainer}>
-                <ProductPreview imgUrl={"https://imgur.com/iOeUBV7.png"}/>
+class App extends Component {
+    state = {
+        productData: ProductData,
+        currentPreviewImage: 'https://imgur.com/iOeUBV7.png',
+        showHeartBeatsSection: true,
+    }
+    onHeartClick = () => {
+        this.setState({showHeartBeatsSection : true})
+    }
 
-                <div className={classes.ProductData}>
-                    <h1 className={classes.ProductTitle}>{ProductData.title}</h1>
-                    <p className={classes.ProductDescription}>{ProductData.description}</p>
-                    <h3 className={classes.SectionHeading}>Select Color</h3>
-                    <div>
-                        {ProductData.colorOptions.map((item, pos) => {
-                            return <img className={pos === 0 ? [classes.ProductImage, classes.SelectedProductImage].join(' ') :
-                                classes.ProductImage} src={item.imageUrl} alt={item.styleName}/>
-                        })}
-                    </div>
-                    <h3 className={classes.SectionHeading}>Features</h3>
-                    <div>
-                        <button className={[classes.ButtonFeature, classes.ButtonFeatureSelected].join(' ')}>Time</button>
-                        <button className={classes.ButtonFeature}>Heart Beat</button>
-                    </div>
-                    <div>
-                        <button className={classes.PrimaryButton}>
-                            Buy Now
-                        </button>
-                    </div>
+    onTimeClick = () => {
+        this.setState({showHeartBeatsSection : false})
+    }
 
-                </div>
-            </div>
-        </div>
-    );
+    onImageClicked = (pos) => {
+        const clickedImage = this.state.productData.colorOptions[pos].imageUrl;
+        this.setState({currentPreviewImage: clickedImage});
+    }
+     render() {
+         return (
+             <div className="App">
+                 <Topbar/>
+                 <div className={classes.MainContainer}>
+                     <ProductPreview imgUrl={this.state.currentPreviewImage} showHeartBeat={this.state.showHeartBeatsSection}/>
+                     <ProductDetail data={this.state.productData} onHeartClick={this.onHeartClick}
+                                    onTimeClick={this.onTimeClick} onImageClicked={this.onImageClicked}
+                                    currentPreviewImage={this.state.currentPreviewImage}
+                        />
+                 </div>
+             </div>
+         );
+     }
+
+
 }
 
 export default App;
