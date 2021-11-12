@@ -70,6 +70,7 @@
     padding: 12px 24px;
     margin-top: 20px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .ButtonFeature:hover {

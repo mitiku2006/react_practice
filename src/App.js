@@ -11,6 +11,7 @@ class App extends Component {
         productData: ProductData,
         currentPreviewImage: 'https://imgur.com/iOeUBV7.png',
         showHeartBeatsSection: true,
+        visible: false,
     }
     onHeartClick = () => {
         this.setState({showHeartBeatsSection : true})
@@ -24,6 +25,19 @@ class App extends Component {
         const clickedImage = this.state.productData.colorOptions[pos].imageUrl;
         this.setState({currentPreviewImage: clickedImage});
     }
+
+    showDrawer = () => {
+        console.log(this.state.visible);
+        this.setState({
+            visible: true,
+        });
+    };
+
+    onClose = () => {
+        this.setState({
+            visible: false,
+        });
+    };
      render() {
          return (
              <div className="App">
@@ -35,6 +49,9 @@ class App extends Component {
                                     onTimeClick={this.onTimeClick} onImageClicked={this.onImageClicked}
                                     currentPreviewImage={this.state.currentPreviewImage}
                                     showHeartBeat={this.state.showHeartBeatsSection}
+                                    onCloseClick={this.onClose}
+                                    showDrowerClick={this.showDrawer}
+                                    visible={this.state.visible}
                         />
                  </div>
              </div>

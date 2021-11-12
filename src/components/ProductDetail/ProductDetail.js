@@ -1,5 +1,8 @@
 import React from "react";
+
+import { Drawer, Button, Space } from 'antd';
 import classes from "./ProductDetail.module.css";
+import 'antd/dist/antd.css';
 
 const ProductDetail = (props) => {
     return (
@@ -28,9 +31,26 @@ const ProductDetail = (props) => {
                     onClick={() => props.onHeartClick()}>Heart Beat</button>
             </div>
             <div>
-                <button className={classes.PrimaryButton}>
+                <button className={classes.PrimaryButton} onClick={() => props.showDrowerClick()}>
                     Buy Now
                 </button>
+                <Drawer
+                    title="Create a new account"
+                    width={720}
+                    onClose={() => props.onCloseClick()}
+                    visible={props.visible}
+                    bodyStyle={{ paddingBottom: 80 }}
+                    extra={
+                        <Space>
+                            <Button onClick={() => props.onCloseClick()}>Cancel</Button>
+                            <Button onClick={() => props.onCloseClick()} type="primary">
+                                Submit
+                            </Button>
+                        </Space>
+                    }
+                >
+                    test
+                </Drawer>
             </div>
 
         </div>
